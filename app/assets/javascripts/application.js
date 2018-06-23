@@ -16,4 +16,5 @@
 //= require jquery
 //= require bootstrap/dist/js/bootstrap.min
 //= require admin-lte/dist/js/adminlte.min
+//= require vue/dist/vue
 //= require_tree .
