@@ -1,0 +1,36 @@
+.content-header
+  .container-fluid
+    .row
+      .col-12
+        %h1.text-dark Sample#starter
+    .row
+.content
+  .container-fluid
+    .card
+      .card-header
+        %h3 Edit
+      .card-body
+        = form_with model: @product, url: "#" do |f|
+          .form-group
+            .row
+              .col-6
+                = f.label :name
+              .col-6.text-right
+                = Product::MAX_NAME_LENGTH
+            = f.text_field :name, size: Product::MAX_NAME_LENGTH, placeholder: "Product name", class: "form-control", id: "product-name"
+
+          .form-group
+            .row
+              .col-6
+                = f.label :tagline
+              .col-6.text-right
+                = Product::MAX_TAGLINE_LENGTH
+            = f.text_field :tagline, size: Product::MAX_TAGLINE_LENGTH, placeholder: "Product tagline", class: "form-control", id: "product-taglne"
+
+          .form-group
+            .row
+              .col-6
+                = f.label :description
+              .col-6.text-right
+                = Product::MAX_DESCRIPTION_LENGTH
+            = f.text_area :description, size: Product::MAX_DESCRIPTION_LENGTH, placeholder: "Product description", class: "form-control"
