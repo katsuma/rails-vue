@@ -10,27 +10,41 @@
       .card-header
         %h3 Edit
       .card-body
-        = form_with model: @product, url: "#" do |f|
+        = form_with model: @product, url: "#", id: "product-form" do |f|
           .form-group
             .row
               .col-6
                 = f.label :name
               .col-6.text-right
-                = Product::MAX_NAME_LENGTH
-            = f.text_field :name, size: Product::MAX_NAME_LENGTH, placeholder: "Product name", class: "form-control", id: "product-name"
+                %span
+                  {{#{Product::MAX_NAME_LENGTH} - product_name.length}}
+            = f.text_field :name, size: Product::MAX_NAME_LENGTH, class: "form-control", id: "product-name", "v-model": "product_name"
 
           .form-group
             .row
               .col-6
                 = f.label :tagline
               .col-6.text-right
-                = Product::MAX_TAGLINE_LENGTH
-            = f.text_field :tagline, size: Product::MAX_TAGLINE_LENGTH, placeholder: "Product tagline", class: "form-control", id: "product-taglne"
+                %span
+                  {{#{Product::MAX_TAGLINE_LENGTH} - product_tagline.length}}
+            = f.text_field :tagline, size: Product::MAX_TAGLINE_LENGTH, class: "form-control", id: "product-taglne", "v-model": "product_tagline"
 
           .form-group
             .row
               .col-6
                 = f.label :description
               .col-6.text-right
-                = Product::MAX_DESCRIPTION_LENGTH
-            = f.text_area :description, size: Product::MAX_DESCRIPTION_LENGTH, placeholder: "Product description", class: "form-control"
+                {{#{Product::MAX_DESCRIPTION_LENGTH} - product_description.length}}
+            = f.text_area :description, size: Product::MAX_DESCRIPTION_LENGTH, class: "form-control", id: "product-description", "v-model": "product_description"
+
+:javascript
+  var app = new Vue(
+    {
+      el: "#product-form",
+      data: {
+        product_name: "#{@product.name}",
+        product_tagline: "#{@product.tagline}",
+        product_description: "#{@product.description}",
+      },
+    }
+  )
