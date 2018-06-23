@@ -1,0 +1,11 @@
+%aside.main-sidebar.sidebar-dark-primary.elevation-4
+  .sidebar
+    %nav.mt-2
+      %ul.nav.nav-pills.nav-sidebar.flex-column
+        - c = params[:controller]
+
+        %li.nav-header 配送の管理
+        %li.nav-item
+          = link_to "#", class: "nav-link #{(c == 'tags' ? 'active' : nil) }" do
+            %i.nav-icon.fa.fa-tag
+            %p タグの管理
