@@ -4,8 +4,8 @@
       %ul.nav.nav-pills.nav-sidebar.flex-column
         - c = params[:controller]
 
-        %li.nav-header 配送の管理
+        %li.nav-header Sample
         %li.nav-item
-          = link_to "#", class: "nav-link #{(c == 'tags' ? 'active' : nil) }" do
+          = link_to "/products", class: "nav-link #{(c == 'products' ? 'active' : nil) }" do
             %i.nav-icon.fa.fa-tag
-            %p タグの管理
+            %p 商品管理
