@@ -16,8 +16,8 @@
               .col-6
                 = f.label :name
               .col-6.text-right
-                %span
-                  {{#{Product::MAX_NAME_LENGTH} - product_name.length}}
+                %span{ "v-bind:class": "(#{Product::MAX_NAME_LENGTH} >= product_name.length) ? 'text-muted' : 'text-danger'" }
+                  残り{{#{Product::MAX_NAME_LENGTH} - product_name.length}}文字
             = f.text_field :name, size: Product::MAX_NAME_LENGTH, class: "form-control", id: "product-name", "v-model": "product_name"
 
           .form-group
@@ -25,8 +25,8 @@
               .col-6
                 = f.label :tagline
               .col-6.text-right
-                %span
-                  {{#{Product::MAX_TAGLINE_LENGTH} - product_tagline.length}}
+                %span{ "v-bind:class": "(#{Product::MAX_TAGLINE_LENGTH} >= product_tagline.length) ? 'text-muted' : 'text-danger'" }
+                  残り{{#{Product::MAX_TAGLINE_LENGTH} - product_tagline.length}}文字
             = f.text_field :tagline, size: Product::MAX_TAGLINE_LENGTH, class: "form-control", id: "product-taglne", "v-model": "product_tagline"
 
           .form-group
@@ -34,7 +34,8 @@
               .col-6
                 = f.label :description
               .col-6.text-right
-                {{#{Product::MAX_DESCRIPTION_LENGTH} - product_description.length}}
+                %span{ "v-bind:class": "(#{Product::MAX_DESCRIPTION_LENGTH} >= product_description.length) ? 'text-muted' : 'text-danger'" }
+                  残り{{#{Product::MAX_DESCRIPTION_LENGTH} - product_description.length}}文字
             = f.text_area :description, size: Product::MAX_DESCRIPTION_LENGTH, class: "form-control", id: "product-description", "v-model": "product_description"
 
 :javascript
